@@ -1,5 +1,8 @@
 # 🗂️ Outbox
 
+![Live Status](https://img.shields.io/badge/Status-Live-success)
+**Live Demo:** [https://outbox.shreyasvavley.workers.dev/](https://outbox.shreyasvavley.workers.dev/)
+
 **A high-fidelity, schema-driven resume engine with real-time automated canvas constraints.**
 
 Outbox is a modern resume builder designed for developers and designers who want total control over their data without sacrificing layout precision. Instead of fighting with WYSIWYG editors, you provide strict JSON-like structured data in the Editor, and the Canvas takes care of pixel-perfect A4 constraints, typography scaling, and print formatting.
