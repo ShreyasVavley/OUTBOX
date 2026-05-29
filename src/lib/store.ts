@@ -17,6 +17,7 @@ interface ResumeStore {
   // Deep Nested Updates
   updateExperienceBullet: (expId: ID, bulletIndex: number, newText: string) => void;
   addExperienceBullet: (expId: ID) => void;
+  removeExperienceBullet: (expId: ID, bulletIndex: number) => void;
   // Certificates Array Updates
   addCertificate: (item: CertificateItem) => void;
   updateCertificate: (id: ID, updates: Partial<CertificateItem>) => void;
