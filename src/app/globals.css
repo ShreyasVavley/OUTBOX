@@ -1,0 +1,141 @@
+/* src/app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Default variables */
+  --font-sans: 'Inter', sans-serif;
+  --base-font-size: 10pt;
+  --spacing-multiplier: 1;
+  --page-margin: 15mm;
+  --heading-scale: 1.2;
+}
+
+/* Themes */
+:root[data-theme="classic-light"] {
+  --bg-canvas: #f3f4f6;
+  --panel-bg: #ffffff;
+  --text-main: #1a1a1a;
+  --text-muted: #666666;
+  --brand-accent: #2563eb;
+  --border-subtle: #e5e7eb;
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+}
+
+:root[data-theme="dark-minimal"] {
+  --bg-canvas: #0a0a0a;
+  --panel-bg: #121212;
+  --text-main: #e5e5e5;
+  --text-muted: #a3a3a3;
+  --brand-accent: #ffffff;
+  --border-subtle: #333333;
+  --input-bg: #1a1a1a;
+  --input-border: #404040;
+}
+
+:root[data-theme="midnight-obsidian"] {
+  --bg-canvas: #020617; 
+  --panel-bg: #0f172a;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --brand-accent: #38bdf8;
+  --border-subtle: #1e293b;
+  --input-bg: #1e293b;
+  --input-border: #334155;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  height: 100vh;
+  overflow: hidden; /* Split-screen handles its own scroll */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Utilities */
+.btn-primary {
+  background-color: var(--brand-accent);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Scrollbar styling for panels */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--panel-bg); 
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle); 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted); 
+}
+
+/* Phase 6: Deterministic Native Print Compilation */
+@media print {
+  body {
+    background-color: white !important;
+    height: auto;
+    overflow: visible;
+  }
+
+  .editor-panel, 
+  .site-header, 
+  .theme-switcher,
+  .no-print {
+    display: none !important;
+  }
+  
+  .canvas-wrapper {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  .a4-document {
+    width: 210mm !important;
+    height: 297mm !important;
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    page-break-after: avoid;
+    transform: none !important;
+    margin: 0 !important;
+  }
+  
+  .a4-document {
+    --bg-canvas: #ffffff !important;
+    --text-main: #000000 !important;
+    --text-muted: #333333 !important;
+    --brand-accent: #000000 !important;
+  }
+}
