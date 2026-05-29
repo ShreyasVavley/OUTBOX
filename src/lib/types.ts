@@ -27,10 +27,26 @@ export interface EducationItem {
   bullets: string[];
 }
 
+export interface CertificateItem {
+  id: ID;
+  name: string;
+  issuer: string;
+  date: string;
+  url: string;
+}
+
 export interface SkillGroup {
   id: ID;
   category: string;
   skills: string[];
+}
+
+export interface ProjectItem {
+  id: ID;
+  name: string;
+  description: string;
+  techStack: string[];
+  link: string;
 }
 
 export interface ResumeSchema {
@@ -42,7 +58,9 @@ export interface ResumeSchema {
   };
   experience: ExperienceItem[];
   education: EducationItem[];
+  certificates: CertificateItem[];
   skills: SkillGroup[];
+  projects: ProjectItem[];
   metadata: {
     theme: 'classic-light' | 'dark-minimal' | 'midnight-obsidian';
     typography: {
@@ -99,12 +117,30 @@ export const defaultResumeState: ResumeSchema = {
       ],
     },
   ],
+  certificates: [
+    {
+      id: generateId(),
+      name: 'AWS Certified Solutions Architect',
+      issuer: 'Amazon Web Services',
+      date: '2023',
+      url: 'https://aws.amazon.com/certification/'
+    }
+  ],
   skills: [
     {
       id: generateId(),
       category: 'Languages & Frameworks',
       skills: ['TypeScript', 'React', 'Next.js', 'Node.js', 'GraphQL'],
     },
+  ],
+  projects: [
+    {
+      id: generateId(),
+      name: 'Outbox Resume Builder',
+      description: 'A schema-driven high-fidelity resume builder featuring an automated, page-constrained real-time canvas preview.',
+      techStack: ['Next.js', 'React', 'TypeScript', 'Zustand'],
+      link: 'github.com/shreyasvavley/outbox'
+    }
   ],
   metadata: {
     theme: 'midnight-obsidian',

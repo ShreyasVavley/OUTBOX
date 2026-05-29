@@ -18,7 +18,7 @@ export default function Home() {
           <Editor />
         </div>
       </div>
-      <div className="canvas-wrapper" style={{ flex: 1, position: 'relative', overflowY: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
+      <div className="canvas-wrapper" style={{ flex: 1, position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0 }}>
         <Canvas />
       </div>
       
