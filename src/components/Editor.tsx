@@ -6,7 +6,7 @@ import { generateId } from '@/lib/types';
 
 export default function Editor() {
   const data = useResumeStore((state) => state.data);
-  const { basics, experience, education, skills, projects, certificates } = data;
+  const { basics, experience, education, skills, projects, certificates, metadata } = data;
   
   const store = useResumeStore();
 
@@ -221,6 +221,54 @@ export default function Editor() {
             <a href={cert.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.75rem', color: 'var(--brand-accent)', textDecoration: 'none', display: 'inline-block', marginTop: '0.5rem' }}>Verify Link</a>
           </div>
         ))}
+      </section>
+
+      {/* DESIGN SETTINGS */}
+      <section style={{ marginBottom: '2rem', marginTop: '2rem', paddingTop: '2rem', borderTop: '2px dashed var(--border-subtle)' }}>
+        <h2 style={{ marginBottom: '1rem', fontSize: '1.2rem', fontWeight: 600 }}>Design Settings</h2>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          <div>
+            <label style={labelStyle}>Base Font Size (pt)</label>
+            <input 
+              type="number" 
+              style={inputStyle} 
+              value={metadata.typography.baseFontSize} 
+              onChange={(e) => store.updateMetadata('typography', { ...metadata.typography, baseFontSize: parseFloat(e.target.value) || 10 })} 
+              step="0.5"
+            />
+          </div>
+          <div>
+            <label style={labelStyle}>Line Spacing</label>
+            <input 
+              type="number" 
+              style={inputStyle} 
+              value={metadata.layout.spacing} 
+              onChange={(e) => store.updateMetadata('layout', { ...metadata.layout, spacing: parseFloat(e.target.value) || 1 })} 
+              step="0.1"
+            />
+          </div>
+          <div>
+            <label style={labelStyle}>Margin Size (mm)</label>
+            <input 
+              type="number" 
+              style={inputStyle} 
+              value={metadata.layout.margin} 
+              onChange={(e) => store.updateMetadata('layout', { ...metadata.layout, margin: parseFloat(e.target.value) || 15 })} 
+              step="1"
+            />
+          </div>
+          <div>
+            <label style={labelStyle}>Heading Scale</label>
+            <input 
+              type="number" 
+              style={inputStyle} 
+              value={metadata.typography.headingScale} 
+              onChange={(e) => store.updateMetadata('typography', { ...metadata.typography, headingScale: parseFloat(e.target.value) || 1.2 })} 
+              step="0.1"
+            />
+          </div>
+        </div>
       </section>
     </div>
   );
